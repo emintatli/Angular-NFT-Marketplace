@@ -1,0 +1,33 @@
+<div *ngIf="nftDetails" class="mt-5 flex flex-col sm:flex-row p-5 m-5">
+  <div>
+    <div class="flex items-center justify-center">
+        <p-image [src]="nftDetails?.image" alt="Image" width="350px" [preview]="true"></p-image>
+    </div>
+    <div class="flex items-center justify-center sm:items-end">
+        <div>
+            <div class="flex items-center mb-4"><span class="text-6xl text-fo">{{'price'|_translate}}</span></div>
+            <div class="flex items-center mb-4">
+                <p class="text-center mr-2 font-mono text-xl text-fo">{{ nftMarketDetails?.price / 1000000000000000000 }}</p>
+                <img pTooltip="MATIC" width="23px" src="/assets/matic.svg" />
+            </div>
+            <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-shopping-cart"
+                [label]="'buy'|_translate"
+                class="p-button-raised p-button-success buy-button text-fo"
+                (click)="initBuy(nftMarketDetails?.marketItemId,nftMarketDetails?.price)"
+            ></button>
+        </div>
+    </div>
+  </div>
+  <div class="p-5 relative">
+    <div class="chip text-fo absolute right-0 id-chip">#{{nftMarketDetails?.marketItemId}}</div>
+    <i class="pi pi-book text-3xl absolute top-3 left-3"></i> <h1 class="text-7xl text-fo ml-2">{{nftDetails?.name}}</h1>
+    <div class="chip text-fo">{{'seller'|_translate}}: {{nftMarketDetails?.seller|shorten}}</div>
+    <div class="mt-5 desc font-mono">
+      {{nftDetails?.description}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="mb-2 flex flex-col sm:flex-row grow toolbar-dash">
+    <div class="p-toolbar-group-left">
+        <p class="font-mono text-xl m-1 subpixel-antialiased border-b-2 ml-2">{{ 'account' | _translate }}</p>
+        <p class="font-mono text-xl m-1 subpixel-antialiased ml-2">
+            {{ web3Service?.address[0] | shorten }}
+        </p>
+    </div>
+    <p-tabMenu [activeItem]="tabItems[0]" [model]="tabItems"></p-tabMenu>
+    <div class="p-toolbar-group-right">
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        <button
+            type="button"
+            class="p-button p-button-info mt-2 sm:mt-0"
+            pButton
+            icon="pi pi-bars"
+            [label]="'menu' | _translate"
+            (click)="menu.toggle($event)"
+        ></button>
+    </div>
+</div>
+<div class="flex flex-col mt-1 items-center">
+    <app-nft-card
+        *ngIf="tabState == 'wallet'"
+        [type]="'userpage'"
+        class="flex grid grid-cols-1 gap-1 sm:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-between"
+        [nftList]="nftList"
+    ></app-nft-card>
+    <app-nft-card
+        *ngIf="tabState == 'market'"
+        [type]="'sellingpage'"
+        class="flex grid grid-cols-1 gap-1 sm:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-between"
+        [nftList]="sellingNFTList"
+    ></app-nft-card>
+
+    <p-paginator
+        *ngIf="(nftList.length > 0 || sellingNFTList.length > 0) && tabState === 'wallet'"
+        class="mt-5"
+        [rows]="limit"
+        [totalRecords]="validNftCount"
+        (onPageChange)="paginate2($event)"
+    ></p-paginator>
+
+    <p-paginator
+        *ngIf="(nftList.length > 0 || sellingNFTList.length > 0) && tabState === 'market'"
+        class="mt-5"
+        [rows]="limit"
+        [totalRecords]="validNftCount"
+        (onPageChange)="paginate2market($event)"
+    ></p-paginator>
+</div>

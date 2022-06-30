@@ -1,0 +1,86 @@
+<div class="card m-3">
+    <p class="font-mono text-xl m-1 subpixel-antialiased border-b-2">{{'create'|_translate}}</p>
+    <div class="border-4">
+        <div class="col font-mono m-2 relative">
+            <p>{{'cover_image'|_translate}}</p>
+            <p-image [src]="nftDetails.image" alt="Image" width="250" [preview]="true"></p-image><br />
+
+            <p>{{'image_file_ipfs'|_translate}}</p>
+            <div class="p-inputgroup mt-2">
+                <input
+                    type="text"
+                    pInputText
+                    placeholder="IPFS Url"
+                    [(ngModel)]="nftDetails.image !== '/assets/cover.png' ? nftDetails.image : emptyString"
+                    [disabled]="true"
+                />
+                <p-fileUpload
+                    mode="basic"
+                    [disabled]="uploadingEvent"
+                    (onSend)="uploading($event)"
+                    accept="image/png, image/jpeg"
+                    [fileLimit]="1"
+                    name="files"
+                    url="BE_API_URL_HERE"
+                    (onUpload)="onBasicUpload($event)"
+                    [auto]="true"
+                    [chooseLabel]="'browse'|_translate"
+                ></p-fileUpload>
+            </div>
+        </div>
+
+        <div class="col font-mono m-2">
+            <p>{{'details'|_translate}}</p>
+            <div class="p-inputgroup mt-2">
+                <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+                <input type="text" pInputText [placeholder]="'title'|_translate" [(ngModel)]="nftDetails.name" />
+            </div>
+            <div class="p-inputgroup mt-2">
+                <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+                <input type="text" pInputText [placeholder]="'description'|_translate" [(ngModel)]="nftDetails.description" />
+            </div>
+        </div>
+
+        <div class="col font-mono m-2">
+            <p>{{'pdf_file_upload'|_translate}}</p>
+            <div class="p-inputgroup mt-2">
+                <input
+                    type="text"
+                    class="mt-2"
+                    pInputText
+                    placeholder="IPFS Url"
+                    [(ngModel)]="nftDetails.pdf"
+                    [disabled]="true"
+                />
+                <p-fileUpload
+                    mode="basic"
+                    [disabled]="uploadingEvent"
+                    (onSend)="uploading($event)"
+                    accept="application/pdf"
+                    [fileLimit]="1"
+                    name="files"
+                    url="BE_API_URL_HERE"
+                    (onUpload)="onBasicUpload($event)"
+                    [auto]="true"
+                    [chooseLabel]="'browse'|_translate"
+                ></p-fileUpload>
+            </div>
+
+            <p class="italic text-slate-400 font-mono" *ngIf="nftDetails.pdfName">{{'uploaded'|_translate}} :{{ nftDetails.pdfName }}</p>
+        </div>
+        <div class="flex justify-center">
+            <button
+                pButton
+                pRipple
+                type="button"
+                [label]="'create'|_translate"
+                icon="pi pi-box"
+                class="p-button-warning m-3"
+                (click)="createNFT()"
+                [loading]="buttonLoading"
+            ></button>
+        </div>
+        <div class="border-4"></div>
+    </div>
+</div>
+<p-toast></p-toast>

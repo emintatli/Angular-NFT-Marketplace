@@ -1,0 +1,32 @@
+<div class="flex justify-between">
+    <div class="p-toolbar-group-left">
+        <img routerLink="/" width="100px" class="cursor-pointer pb-2" src="/assets/logo.png" />
+    </div>
+    <div class="p-toolbar-group-right">
+        <button
+            pButton
+            pRipple
+            type="button"
+            [label]="'create_button'|_translate"
+            icon="pi pi-plus"
+            class="p-button-rounded p-button-secondary p-button-outlined mr-4 main-button-color"
+            routerLink="account/create"
+        ></button>
+        <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-user"
+            class="p-button-rounded p-button-secondary p-button-outlined mr-4 main-button-color"
+            routerLink="account"
+        ></button>
+        <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-wallet"
+            class="p-button-rounded p-button-secondary p-button-outlined main-button-color"
+            routerLink="account"
+        ></button>
+    </div>
+  </div>

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+.text-fo{
+  font-family: 'Staatliches', cursive;
+}
+.main-button-back{
+  background-color:#852C68!important;
+  color:white!important;
+  border:none;
+  width: 30px!important;
+  height: 30px!important;
+  z-index: 1;
+}
+.secondary-button-back{
+  background-color:#300f25!important;
+  color:white!important;
+  border:none;
+  z-index: 1;
+}
+.border-color{
+  border-color:#9d174d !important;
+}
+.mr-0{
+  margin-right: 0px!important;
+}
+.image-p{
+  width: 300px!important;
+  height: 350px!important;
+}
+.card-ma:hover{
+
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 3px #45457585;
+
+}
+.image-p{
+  z-index: 0;
+}
