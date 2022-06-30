@@ -1,27 +1,35 @@
-# Pdfnft
+### Features
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+- You can upload pdf & images to ipfs from "/account/create" (pinata api)
+- NFT creation
+- NFT listing/delisting settings price
 
-## Development server
+# BookNFT - PDF & Image Angular NFT Marketplace 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Screenshot_5](https://user-images.githubusercontent.com/17429183/176722854-181e1409-ec13-4477-b3bc-5d9fecc078ba.png)
 
-## Code scaffolding
+#### Contracts
+- Contract files are inside "contract" folder.
+**Deployed examples :**
+https://mumbai.polygonscan.com/address/0x32e320b4961aff689273bc87727b2067f5142bde
+https://mumbai.polygonscan.com/address/0x7b7eea90e9804c57073e50cf1a97f3ef2fc16a57
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Backend
+https://github.com/emintatli/PDF-NFT-BE
 
-## Build
+### Setting up
+- In "src/app/services/web.service.ts" you need to change
+nftContractAddress & marketplaceContractAddress variables.
+also you need to set up a pinata gateway and change pinataGateway variable
+- In "src/app/services/api.service.ts" you need to change Backend api URL
+- In "src\app\pages\account\create\create.component.html" you need to change 
+"BE API URL HERE" (there are 2 of them) to your backend api URL
+- You can edit** languages** in "src/app/services/translate.service.ts"
+### Screenshots
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![Screenshot_1](https://user-images.githubusercontent.com/17429183/176722952-a4f815d1-340e-4f9e-b9e8-ede34841dd77.png)
+![Screenshot_2](https://user-images.githubusercontent.com/17429183/176722956-c2f021e5-5306-4711-8397-b432c935ca6d.png)
+![Screenshot_3](https://user-images.githubusercontent.com/17429183/176722958-2dfc6457-dd8f-4917-a4c6-995ec8812b73.png)
+![Screenshot_4](https://user-images.githubusercontent.com/17429183/176722961-e9b26565-ccf7-4858-8a4c-114a399b6749.png)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
